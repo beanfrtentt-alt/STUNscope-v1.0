@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stunscope"
+version = "1.0.0"
+description = "STUN (RFC 8489) packet analyzer with a CLI and a Windows desktop GUI, for authorized network diagnostics."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "STUNScope contributors" }]
+keywords = ["stun", "rfc8489", "nat", "network", "diagnostics", "packets", "pcap", "npcap"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Telecommunications Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: Internet",
+]
+dependencies = [
+    "scapy>=2.5,<3",
+]
+
+[project.optional-dependencies]
+gui = [
+    "PySide6>=6.6,<7",
+]
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.4,<1",
+    "pyinstaller>=6,<7",
+]
+all = [
+    "stunscope[gui,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR-USERNAME/stunscope"
+Documentation = "https://github.com/YOUR-USERNAME/stunscope/tree/main/docs"
+Issues = "https://github.com/YOUR-USERNAME/stunscope/issues"
+
+[project.scripts]
+stunscope = "stunscope.cli:main"
+stunscope-gui = "stunscope.gui.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+stunscope = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# Start from a conservative, stable rule set: pyflakes + a core subset
+# of pycodestyle errors that catch real bugs without style churn.
+select = ["E9", "F", "E7"]
+ignore = [
+    "E741", # allow short variable names like `l` in tight protocol code
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E712"]

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+wheels/
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test and tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+
+# Logs and local captures (never commit real traffic)
+logs/
+*.log
+*.pcap
+*.pcapng
+captures/
+*.local.csv
+
+# Local settings, secrets, and environment files
+*.env
+.env.*
+secrets/
+settings.local.json
+
+# Editors and OS noise
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# PyInstaller output
+*.spec
+onefile-build/

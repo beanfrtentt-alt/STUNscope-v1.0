@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and usage help
+    url: https://github.com/YOUR-USERNAME/stunscope/discussions
+    about: Ask how to set up Npcap, run captures, or read STUN output.
+  - name: Security reports
+    url: https://github.com/YOUR-USERNAME/stunscope/blob/main/SECURITY.md
+    about: Please report security issues following SECURITY.md, not in public issues.

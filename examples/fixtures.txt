@@ -1,0 +1,30 @@
+# STUNScope example fixtures — SYNTHETIC DATA ONLY.
+#
+# One hex-encoded STUN message per line. Optional prefix:
+#   src-ip:src-port->dst-ip:dst-port
+#
+# All addresses are from RFC 5737 / RFC 3849 documentation ranges
+# (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24, 2001:db8::/32).
+# Nothing here comes from a real network or a real call.
+#
+# Parse offline with:
+#   python -m stunscope parse-file examples\fixtures.txt --verbose
+#
+# Message 1: Binding Request carrying SOFTWARE ("STUNScope synthetic client").
+000100202112a44200112233445566778899aabb8022001a5354554e53636f70652073796e74686574696320636c69656e740000
+
+# Message 2: Binding Success Response with XOR-MAPPED-ADDRESS.
+# Decodes to 192.0.2.34:4660 (port ^0x2112 = 0x3326; addr ^cookie = 0xE112A660).
+0101000c2112a44200112233445566778899aabb0020000800013326e112a660
+
+# Message 3: Binding Error Response 401 Unauthorized with REALM and NONCE.
+0111003c2112a44200112233445566778899aabb0009001000000401556e617574686f72697a65640014000f6578616d706c652e696e76616c6964000015001066366333613166653562326434653666
+
+# Message 4: Binding Success Response with IPv6 XOR-MAPPED-ADDRESS.
+# Decodes to [2001:db8:1234:5678:11:2233:4455:6666]:22136 using the
+# cookie + transaction-ID mask (hand-computed reference vector).
+0101003c2112a44200112233445566778899aabb002000140002776a0113a9fa1225744b44444444ccccccdd8022001f5354554e53636f70652073796e746865746963207365727665722076312e3000
+
+# Message 5: a deliberately malformed frame (body length 7 is not a
+# multiple of four) to demonstrate readable diagnostics.
+010100072112a44200112233445566778899aabb00200004deadbeef

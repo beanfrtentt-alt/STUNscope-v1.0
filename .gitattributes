@@ -1,2 +1,23 @@
-# Auto detect text files and perform LF normalization
+# Normalize line endings for text files; keep Windows scripts CRLF.
 * text=auto
+
+# Windows scripts must keep CRLF endings
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix scripts always LF
+*.sh text eol=lf
+
+# Sources
+*.py text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.ico binary
+*.zip binary

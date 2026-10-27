@@ -1,0 +1,20 @@
+# Assets
+
+This folder holds packaging icons and screenshot material.
+
+Current contents:
+
+- `placeholder.txt` — this file. Keeps the directory in version control
+  until real assets are added.
+
+Planned:
+
+- `icon.ico` — application icon for the PyInstaller build
+  (`build_windows.ps1` will gain an `--icon assets/icon.ico` flag).
+- `docs/screenshots/*.png` — GUI screenshots referenced by the README's
+  screenshots section. They will be captured from the running app using
+  synthetic traffic only, so no personal data appears in them.
+
+If you contribute an icon or screenshot, it must contain no third-party
+trademarks, no real addresses, and no captured traffic from networks you do
+not own.

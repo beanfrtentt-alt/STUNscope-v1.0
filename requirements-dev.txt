@@ -1,0 +1,6 @@
+# Development dependencies: testing, linting, and the optional
+# PyInstaller-based Windows executable build.
+-r requirements.txt
+pytest>=8,<9
+ruff>=0.4,<1
+pyinstaller>=6,<7
